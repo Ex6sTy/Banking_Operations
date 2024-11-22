@@ -169,8 +169,39 @@ print(formatted_date)
 
 ### Форматирование даты
 Используйте get_date, чтобы получить отформатированную дату для удобного отображения.
+## Новый Модуль: Генераторы Транзакций
+
+В проект добавлен новый модуль `generators`, который предоставляет функции для эффективной работы с большими объемами данных о транзакциях.
+
+### Функции модуля:
+
+- **filter_by_currency(transactions, currency)**
+  Фильтрует список транзакций по заданной валюте и возвращает итератор.
+  
+  **Пример использования:**
+  ```
+  usd_transactions = filter_by_currency(transactions, "USD")
+  for transaction in usd_transactions:
+      print(transaction)
+  ```
+  
+- **transaction_descriptions(transactions) Генератор, который возвращает описание каждой транзакции.
+  **Пример использования:**
+  ```
+  descriptions = transaction_descriptions(transactions)
+  for description in descriptions:
+    print(description)
+  ```
+- card_number_generator(start, stop) Генератор, создающий номера банковских карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне.
+  **Пример использования:**
+  ```python
+  for card_number in card_number_generator(1, 5):
+    print(card_number)
+  ```
+- 
 ### Вклад в проект
 Проект разрабатывается с использованием подхода GitFlow. Основная разработка ведется в ветке develop, а функциональные изменения - в ветках с префиксом feature. Пожалуйста, убедитесь, что ваш код соответствует стандартам PEP 8 и имеет необходимые тесты, прежде чем создавать pull request.
+
 # Информация о тестировании
 """
 # Тестирование проекта

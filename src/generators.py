@@ -1,4 +1,4 @@
-from typing import List, Dict, Iterator
+from typing import Dict, Iterator, List
 
 
 def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict]:
@@ -43,4 +43,5 @@ def card_number_generator(start: int, stop: int) -> Iterator[str]:
         str: Сгенерированный номер карты в заданном диапазоне.
     """
     for num in range(start, stop + 1):
-        yield f"{num:016}".replace("", " ")[1:-1]
+        formatted_number = f"{num:016}"
+        yield f"{formatted_number[:4]} {formatted_number[4:8]} {formatted_number[8:12]} {formatted_number[12:]}"

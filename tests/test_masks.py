@@ -1,71 +1,80 @@
+from datetime import datetime
+
 import pytest
+from typing import List, Dict, Optional, Union
+from src.processing import filter_by_state, sort_by_date
 
-from src.masks import get_mask_account, get_mask_card_number
-
-
-# Тесты для функции get_mask_card_number
-def test_get_mask_card_number():
+# Тесты для функции filter_by_state
+def test_filter_by_state() -> None:
     """
-    Тестирование правильности маскирования номера карты.
+    Тестирование фильтрации списка словарей по заданному статусу state.
     """
-    assert get_mask_card_number(1234567812345678) == "1234 56** **** 5678"
-    assert get_mask_card_number(1111222233334444) == "1111 22** **** 4444"
+    operations: List[Dict[str, str]] = [
+        {"id": "1", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+        {"id": "2", "state": "CANCELED", "date": "2021-08-01T12:00:00"},
+        {"id": "3", "state": "EXECUTED", "date": "2021-07-01T12:00:00"},
+    ]
+    result: List[Dict[str, str]] = filter_by_state(operations, state="EXECUTED")
+    assert len(result) == 2
+    assert all(op["state"] == "EXECUTED" for op in result)
 
+@pytest.mark.parametrize("state, expected_length", [("EXECUTED", 2), ("CANCELED", 1), ("PENDING", 0)])
+def test_filter_by_state_parametrized(state: str, expected_length: int) -> None:
+    """
+    Параметризация тестов для различных возможных значений статуса state.
+    """
+    operations: List[Dict[str, str]] = [
+        {"id": "1", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+        {"id": "2", "state": "CANCELED", "date": "2021-08-01T12:00:00"},
+        {"id": "3", "state": "EXECUTED", "date": "2021-07-01T12:00:00"},
+    ]
+    result: List[Dict[str, str]] = filter_by_state(operations, state=state)
+    assert len(result) == expected_length
 
-@pytest.mark.parametrize(
-    "card_number, expected", [(1234567812345678, "1234 56** **** 5678"), (1111222233334444, "1111 22** **** 4444")]
-)
-def test_get_mask_card_number_various_formats(card_number, expected):
+# Тесты для функции sort_by_date
+def test_sort_by_date_descending() -> None:
     """
-    Проверка работы функции на различных входных форматах номеров карт.
+    Тестирование сортировки списка словарей по датам в порядке убывания.
     """
-    assert get_mask_card_number(card_number) == expected
+    operations: List[Dict[str, str]] = [
+        {"id": "1", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+        {"id": "2", "state": "CANCELED", "date": "2021-08-01T12:00:00"},
+        {"id": "3", "state": "EXECUTED", "date": "2021-07-01T12:00:00"},
+    ]
+    result: List[Dict[str, str]] = sort_by_date(operations)
+    assert result[0]["date"] > result[-1]["date"]
 
+def test_sort_by_date_ascending() -> None:
+    """
+    Тестирование сортировки списка словарей по датам в порядке возрастания.
+    """
+    operations: List[Dict[str, str]] = [
+        {"id": "1", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+        {"id": "2", "state": "CANCELED", "date": "2021-08-01T12:00:00"},
+        {"id": "3", "state": "EXECUTED", "date": "2021-07-01T12:00:00"},
+    ]
+    result: List[Dict[str, str]] = sort_by_date(operations, descending=False)
+    assert result[0]["date"] < result[-1]["date"]
 
-@pytest.mark.parametrize(
-    "invalid_card_number",
-    [
-        1234,  # Нестандартная длина номера карты
-        "abcd567812345678",  # Содержит нецифровые символы
-        None,  # Отсутствует номер карты
-    ],
-)
-def test_get_mask_card_number_invalid(invalid_card_number):
+def test_sort_by_date_same_dates() -> None:
     """
-    Проверка, что функция корректно обрабатывает неверные входные данные.
+    Проверка корректности сортировки при одинаковых датах.
     """
-    with pytest.raises(ValueError, match="Номер карты должен содержать 16 цифр."):
-        get_mask_card_number(invalid_card_number)
+    operations: List[Dict[str, str]] = [
+        {"id": "1", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+        {"id": "2", "state": "CANCELED", "date": "2021-09-01T12:00:00"},
+        {"id": "3", "state": "EXECUTED", "date": "2021-09-01T12:00:00"},
+    ]
+    result: List[Dict[str, str]] = sort_by_date(operations)
+    assert len(result) == 3
 
-
-# Тесты для функции get_mask_account
-def test_get_mask_account():
+@pytest.mark.parametrize("invalid_date_operations", [
+    [{"id": "1", "state": "EXECUTED", "date": "invalid-date"}],  # Некорректный формат даты
+    [{"id": "2", "state": "CANCELED", "date": None}]  # Отсутствует дата
+])
+def test_sort_by_date_invalid_format(invalid_date_operations: List[Dict[str, Optional[str]]]) -> None:
     """
-    Тестирование правильности маскирования номера счета.
+    Тесты на работу функции с некорректными или нестандартными форматами дат.
     """
-    assert get_mask_account(987654321) == "**4321"
-    assert get_mask_account(123456789) == "**6789"
-
-
-@pytest.mark.parametrize("account_number, expected", [(987654321, "**4321"), (123456789, "**6789")])
-def test_get_mask_account_various_formats(account_number, expected):
-    """
-    Проверка работы функции с различными форматами и длинами номеров счетов.
-    """
-    assert get_mask_account(account_number) == expected
-
-
-@pytest.mark.parametrize(
-    "invalid_account_number",
-    [
-        123,  # Номер счета меньше ожидаемой длины
-        "abcd5678",  # Содержит нецифровые символы
-        None,  # Отсутствует номер счета
-    ],
-)
-def test_get_mask_account_invalid(invalid_account_number):
-    """
-    Проверка, что функция корректно обрабатывает неверные входные данные.
-    """
-    with pytest.raises(ValueError, match="Номер счета должен содержать как минимум 4 цифры."):
-        get_mask_account(invalid_account_number)
+    with pytest.raises(Exception):  # Ожидаем общее исключение, так как сортировка может вызвать разные типы ошибок
+        sort_by_date(invalid_date_operations)

@@ -44,3 +44,11 @@
 2024-11-28 17:58:03,547 - INFO - add ok
 2024-11-28 17:59:00,233 - INFO - Calling function: add with args: (2, 3) kwargs: {}
 2024-11-28 17:59:00,233 - INFO - add ok
+2024-11-28 18:11:49,364 - INFO - Calling function: divide with args: (10, 2) kwargs: {}
+2024-11-28 18:11:49,364 - INFO - divide ok
+2024-11-28 18:11:52,431 - INFO - Calling function: divide with args: (10, 0) kwargs: {}
+2024-11-28 18:11:52,431 - ERROR - divide error: ZeroDivisionError. Inputs: (10, 0), {}
+2024-11-28 18:11:55,856 - INFO - Calling function: divide with args: (10, 2) kwargs: {}
+2024-11-28 18:11:55,856 - INFO - divide ok
+2024-11-28 18:11:58,925 - INFO - Calling function: divide with args: (10, 0) kwargs: {}
+2024-11-28 18:11:58,925 - ERROR - divide error: ZeroDivisionError. Inputs: (10, 0), {}

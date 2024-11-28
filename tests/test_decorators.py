@@ -1,67 +1,49 @@
-import pytest
 import os
-import time
+import pytest
 import logging
+import time
+from src.decorators import log
 
 LOG_FILE = "test_log.txt"
 
 @pytest.fixture(autouse=True)
 def cleanup_logs() -> None:
-    # Закрыть все обработчики логгера, чтобы освободить файл
-    logger = logging.getLogger()
-    handlers = logger.handlers[:]
-    for handler in handlers:
-        handler.close()
-        logger.removeHandler(handler)
+    # Получаем все обработчики логгера root
+    root_logger = logging.getLogger()
+    handlers = root_logger.handlers[:]
 
-    # Убедиться, что файл закрыт перед его удалением
-    if os.path.exists(LOG_FILE):
+    # Закрываем все обработчики, затем удаляем их
+    for handler in handlers:
+        handler.acquire()  # Получаем блокировку, чтобы исключить конкуренцию
         try:
-            os.remove(LOG_FILE)
-        except PermissionError:
-            # Если файл занят, подождать немного и попробовать снова
-            time.sleep(1)
+            handler.close()
+        finally:
+            handler.release()  # Освобождаем блокировку
+        root_logger.removeHandler(handler)
+
+    # Пытаемся удалить файл несколько раз, если он занят
+    for _ in range(3):
+        try:
             if os.path.exists(LOG_FILE):
                 os.remove(LOG_FILE)
-
+            break  # Удаление прошло успешно, выходим из цикла
+        except PermissionError:
+            time.sleep(1)
 
 @log(filename=LOG_FILE)
-def divide(a: float, b: float) -> float:
+def divide(a: int, b: int) -> float:
     return a / b
 
-@log(filename=LOG_FILE)
-def add(a: int, b: int) -> int:
-    return a + b
-
-# Тестирование успешного выполнения функции и записи лога в файл
 def test_log_to_file() -> None:
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
-
-    result = add(2, 3)
-    assert result == 5
-
+    result = divide(10, 2)
+    assert result == 5.0
     with open(LOG_FILE, "r") as log_file:
         log_content = log_file.read()
+    assert "divide ok" in log_content
 
-    assert "add ok" in log_content
-
-# Тестирование успешного выполнения функции с возникновением ошибки и записи в лог файл
 def test_log_error_to_file() -> None:
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
-
     with pytest.raises(ZeroDivisionError):
         divide(10, 0)
-
     with open(LOG_FILE, "r") as log_file:
         log_content = log_file.read()
-
     assert "divide error: ZeroDivisionError" in log_content
-
-# Очистка логов после каждого теста
-@pytest.fixture(autouse=True)
-def cleanup_logs() -> None:
-    if os.path.exists(LOG_FILE):
-        os.remove(LOG_FILE)
-

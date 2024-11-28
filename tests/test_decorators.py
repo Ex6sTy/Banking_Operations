@@ -6,6 +6,7 @@ from src.decorators import log
 
 LOG_FILE = "test_log.txt"
 
+
 @pytest.fixture(autouse=True)
 def cleanup_logs() -> None:
     # Получаем все обработчики логгера root
@@ -30,9 +31,11 @@ def cleanup_logs() -> None:
         except PermissionError:
             time.sleep(1)
 
+
 @log(filename=LOG_FILE)
 def divide(a: int, b: int) -> float:
     return a / b
+
 
 def test_log_to_file() -> None:
     result = divide(10, 2)
@@ -40,6 +43,7 @@ def test_log_to_file() -> None:
     with open(LOG_FILE, "r") as log_file:
         log_content = log_file.read()
     assert "divide ok" in log_content
+
 
 def test_log_error_to_file() -> None:
     with pytest.raises(ZeroDivisionError):

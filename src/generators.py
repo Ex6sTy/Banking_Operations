@@ -3,14 +3,14 @@ from typing import Dict, Iterator, List
 
 def filter_by_currency(transactions: List[Dict], currency: str) -> Iterator[Dict]:
     """
-        Фильтрует список транзакций по заданной валюте.
+    Фильтрует список транзакций по заданной валюте.
 
-        Args:
-            transactions (List[Dict]): Список транзакций.
-            currency (str): Валюта для фильтрации (например, 'USD').
+    Args:
+        transactions (List[Dict]): Список транзакций.
+        currency (str): Валюта для фильтрации (например, 'USD').
 
-        Yields:
-            Dict: Транзакция с заданной валютой.
+    Yields:
+        Dict: Транзакция с заданной валютой.
     """
     for transaction in transactions:
         if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency:

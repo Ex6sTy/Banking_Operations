@@ -13,8 +13,9 @@ def filter_by_state(operations: List[Dict], state: str = "EXECUTED") -> List[Dic
     return [operation for operation in operations if operation.get("state") == state]
 
 
-
-def sort_by_date(operations: List[Dict[str, Optional[str]]], descending: bool = True) -> List[Dict[str, Optional[str]]]:
+def sort_by_date(
+    operations: List[Dict[str, Optional[str]]], descending: bool = True
+) -> List[Dict[str, Optional[str]]]:
     """
     Сортирует список операций по дате.
 
@@ -26,4 +27,3 @@ def sort_by_date(operations: List[Dict[str, Optional[str]]], descending: bool = 
         return sorted(operations, key=lambda x: datetime.fromisoformat(x["date"]), reverse=descending)
     except (ValueError, TypeError):
         raise ValueError("Некорректный формат даты")
-

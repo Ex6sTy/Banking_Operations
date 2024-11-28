@@ -8,11 +8,16 @@ def log(filename: Optional[str] = None) -> Callable:
         # Настройка логгера
         logger = logging.getLogger(func.__name__)
         logger.setLevel(logging.INFO)
+
+        # Очистка старых обработчиков, чтобы избежать дублирование вывода
+        if logger.hasHandlers():
+            logger.handlers.clear()
+
         handler = logging.FileHandler(filename) if filename else logging.StreamHandler()
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
-        
+
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:

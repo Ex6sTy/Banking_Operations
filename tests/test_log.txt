@@ -1,0 +1,46 @@
+2024-11-28 17:24:02,261 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:24:02,261 - INFO - add ok
+2024-11-28 17:24:49,373 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:24:49,373 - INFO - add ok
+2024-11-28 17:24:56,831 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:24:56,831 - INFO - add ok
+2024-11-28 17:25:05,060 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:25:05,060 - INFO - add ok
+2024-11-28 17:25:21,960 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:25:21,960 - INFO - add ok
+2024-11-28 17:25:28,909 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:25:28,909 - INFO - add ok
+2024-11-28 17:31:30,475 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:31:30,475 - INFO - add ok
+2024-11-28 17:31:59,948 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:31:59,948 - INFO - add ok
+2024-11-28 17:32:10,676 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:32:10,676 - INFO - add ok
+2024-11-28 17:32:22,317 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:32:22,317 - INFO - add ok
+2024-11-28 17:33:01,726 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:33:01,726 - INFO - add ok
+2024-11-28 17:33:14,110 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:33:14,110 - INFO - add ok
+2024-11-28 17:33:17,461 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:33:17,461 - INFO - add ok
+2024-11-28 17:33:30,684 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:33:30,684 - INFO - add ok
+2024-11-28 17:33:31,086 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:33:31,086 - INFO - add ok
+2024-11-28 17:34:02,678 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:34:02,678 - INFO - add ok
+2024-11-28 17:47:24,893 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:47:24,893 - INFO - add ok
+2024-11-28 17:48:16,485 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:48:16,486 - INFO - add ok
+2024-11-28 17:49:07,174 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:49:07,174 - INFO - add ok
+2024-11-28 17:54:52,015 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:54:52,015 - INFO - add ok
+2024-11-28 17:55:08,315 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:55:08,315 - INFO - add ok
+2024-11-28 17:58:03,546 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:58:03,547 - INFO - add ok
+2024-11-28 17:59:00,233 - INFO - Calling function: add with args: (2, 3) kwargs: {}
+2024-11-28 17:59:00,233 - INFO - add ok

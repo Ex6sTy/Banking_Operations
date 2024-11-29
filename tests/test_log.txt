@@ -60,3 +60,7 @@
 2024-11-28 18:13:52,328 - INFO - divide ok
 2024-11-28 18:13:55,407 - INFO - Calling function: divide with args: (10, 0) kwargs: {}
 2024-11-28 18:13:55,407 - ERROR - divide error: ZeroDivisionError. Inputs: (10, 0), {}
+2024-11-29 15:34:20,062 - INFO - Calling function: divide with args: (10, 2) kwargs: {}
+2024-11-29 15:34:20,062 - INFO - divide ok
+2024-11-29 15:34:23,119 - INFO - Calling function: divide with args: (10, 0) kwargs: {}
+2024-11-29 15:34:23,119 - ERROR - divide error: ZeroDivisionError. Inputs: (10, 0), {}

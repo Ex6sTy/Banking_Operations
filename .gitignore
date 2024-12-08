@@ -9,3 +9,6 @@
    .venv/
    .DS_Store
    htmlcov/
+   .env
+   pycache/
+   *.log

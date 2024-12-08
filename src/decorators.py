@@ -2,6 +2,7 @@ import logging
 import functools
 from typing import Callable, Any, Optional
 
+
 def log(filename: Optional[str] = None) -> Callable:
     """
     Декоратор для логирования выполнения функций.
@@ -15,6 +16,7 @@ def log(filename: Optional[str] = None) -> Callable:
     Returns:
         Callable: Декорированная функция, логирующая свое выполнение.
     """
+
     def decorator(func: Callable) -> Callable:
         @functools.wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> Any:
@@ -26,7 +28,7 @@ def log(filename: Optional[str] = None) -> Callable:
             else:
                 handler = logging.StreamHandler()
 
-            formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+            formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
             handler.setFormatter(formatter)
 
             # Добавляем обработчик, только если он еще не был добавлен
@@ -47,4 +49,5 @@ def log(filename: Optional[str] = None) -> Callable:
                 logger.removeHandler(handler)
 
         return wrapper
+
     return decorator

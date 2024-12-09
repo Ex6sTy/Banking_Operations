@@ -1,7 +1,9 @@
-import os
-import pytest
 import logging
+import os
 import time
+
+import pytest
+
 from src.decorators import log
 
 LOG_FILE = "test_log.txt"

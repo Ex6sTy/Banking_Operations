@@ -1,26 +1,26 @@
-import pytest
-from src.utils import read_transactions
 from unittest.mock import patch
+
 from src.external_api import convert_to_rub
+from src.utils import read_json
 
 
-def test_read_transactions_valid_file():
-    transactions = read_transactions("data/operations.json")
+def test_read_json_valid_file():
+    transactions = read_json("data/operations.json")
     assert isinstance(transactions, list)
     assert len(transactions) > 0
 
 
-def test_read_transactions_empty_file(tmp_path):
+def test_read_json_empty_file(tmp_path):
     file_path = tmp_path / "empty.json"
     file_path.write_text("[]")
-    transactions = read_transactions(str(file_path))
+    transactions = read_json(str(file_path))
     assert transactions == []
 
 
-def test_read_transactions_invalid_format(tmp_path):
+def test_read_json_invalid_format(tmp_path):
     file_path = tmp_path / "invalid.json"
     file_path.write_text("{}")
-    transactions = read_transactions(str(file_path))
+    transactions = read_json(str(file_path))
     assert transactions == []
 
 

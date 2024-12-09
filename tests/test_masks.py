@@ -1,7 +1,7 @@
-from datetime import datetime
+from typing import Dict, List, Optional
 
 import pytest
-from typing import List, Dict, Optional, Union
+
 from src.processing import filter_by_state, sort_by_date
 
 

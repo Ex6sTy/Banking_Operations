@@ -1,6 +1,8 @@
+from typing import Dict, Iterator, List, Optional
+
 import pytest
-from typing import List, Dict, Optional, Iterator
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 # Пример транзакций для тестирования
 transactions: List[Dict[str, Optional[Dict[str, str]]]] = [

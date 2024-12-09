@@ -1,6 +1,8 @@
-import pytest
-from src.widget import mask_account_card, get_date
 from typing import Optional
+
+import pytest
+
+from src.widget import get_date, mask_account_card
 
 
 # Тесты для функции mask_account_card
@@ -14,7 +16,8 @@ from typing import Optional
 )
 def test_mask_account_card(data: str, expected: str) -> None:
     """
-    Тесты для проверки, что функция корректно распознает и применяет нужный тип маскировки в зависимости от типа входных данных.
+    Тесты для проверки, что функция корректно распознает и применяет нужный тип маскировки
+    в зависимости от типа входных данных.
     """
     assert mask_account_card(data) == expected
 

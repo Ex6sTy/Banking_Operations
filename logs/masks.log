@@ -1,6 +1,6 @@
-2024-12-15 18:05:01,753 - masks - INFO - Masking account number: 123456789
-2024-12-15 18:05:01,753 - masks - INFO - Masked account number: **6789
-2024-12-15 18:05:01,753 - masks - INFO - Masking card number: 1234567812345678
-2024-12-15 18:05:01,753 - masks - INFO - Masked card number: 1234 56** **** 5678
-2024-12-15 18:05:01,754 - masks - INFO - Masking card number: 1111222233334444
-2024-12-15 18:05:01,754 - masks - INFO - Masked card number: 1111 22** **** 4444
+2024-12-16 11:42:42,560 - masks - INFO - Masking account number: 123456789
+2024-12-16 11:42:42,560 - masks - INFO - Masked account number: **6789
+2024-12-16 11:42:42,561 - masks - INFO - Masking card number: 1234567812345678
+2024-12-16 11:42:42,561 - masks - INFO - Masked card number: 1234 56** **** 5678
+2024-12-16 11:42:42,561 - masks - INFO - Masking card number: 1111222233334444
+2024-12-16 11:42:42,561 - masks - INFO - Masked card number: 1111 22** **** 4444

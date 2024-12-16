@@ -1,10 +1,10 @@
-2024-12-15 18:05:00,068 - utils - INFO - Attempting to read JSON file: data/operations.json
-2024-12-15 18:05:00,068 - utils - INFO - Successfully read JSON file: data/operations.json
-2024-12-15 18:05:00,074 - utils - INFO - Attempting to read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-34\test_read_json_empty_file0\empty.json
-2024-12-15 18:05:00,074 - utils - INFO - Successfully read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-34\test_read_json_empty_file0\empty.json
-2024-12-15 18:05:00,075 - utils - INFO - Attempting to read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-34\test_read_json_invalid_format0\invalid.json
-2024-12-15 18:05:00,075 - utils - WARNING - File C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-34\test_read_json_invalid_format0\invalid.json does not contain a list.
-2024-12-15 18:05:01,750 - utils - INFO - Attempting to read JSON file: non_existing_file.json
-2024-12-15 18:05:01,751 - utils - ERROR - File not found: non_existing_file.json. Error: [Errno 2] No such file or directory: 'non_existing_file.json'
-2024-12-15 18:05:01,751 - utils - INFO - Attempting to read JSON file: data/operations.json
-2024-12-15 18:05:01,751 - utils - INFO - Successfully read JSON file: data/operations.json
+2024-12-16 11:42:42,290 - utils - INFO - Attempting to read JSON file: data/operations.json
+2024-12-16 11:42:42,291 - utils - INFO - Successfully read JSON file: data/operations.json
+2024-12-16 11:42:42,297 - utils - INFO - Attempting to read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-37\test_read_json_empty_file0\empty.json
+2024-12-16 11:42:42,297 - utils - INFO - Successfully read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-37\test_read_json_empty_file0\empty.json
+2024-12-16 11:42:42,299 - utils - INFO - Attempting to read JSON file: C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-37\test_read_json_invalid_format0\invalid.json
+2024-12-16 11:42:42,299 - utils - WARNING - File C:\Users\aboga\AppData\Local\Temp\pytest-of-aboga\pytest-37\test_read_json_invalid_format0\invalid.json does not contain a list.
+2024-12-16 11:42:42,559 - utils - INFO - Attempting to read JSON file: non_existing_file.json
+2024-12-16 11:42:42,559 - utils - ERROR - File not found: non_existing_file.json. Error: [Errno 2] No such file or directory: 'non_existing_file.json'
+2024-12-16 11:42:42,559 - utils - INFO - Attempting to read JSON file: data/operations.json
+2024-12-16 11:42:42,559 - utils - INFO - Successfully read JSON file: data/operations.json

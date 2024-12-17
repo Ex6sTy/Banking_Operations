@@ -1,8 +1,10 @@
-from src.file_readers import read_csv, read_excel
-import pytest
-from unittest.mock import patch
-import pandas as pd
 from pathlib import Path
+from unittest.mock import patch
+
+import pandas as pd
+import pytest
+
+from src.file_readers import read_csv, read_excel
 
 
 def test_read_csv_valid_file():

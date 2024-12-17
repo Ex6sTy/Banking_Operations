@@ -1,4 +1,7 @@
-from masks import get_mask_card_number, get_mask_account
+from datetime import datetime
+
+from src.masks import get_mask_account, get_mask_card_number
+
 
 def mask_account_card(data: str) -> str:
     """
@@ -10,16 +13,15 @@ def mask_account_card(data: str) -> str:
     Returns:
         str: Строка с замаскированным номером.
     """
-    if data.startswith('Счет'):
-        number = data.split(' ')[1]
+    if data.startswith("Счет"):
+        number = data.split(" ")[1]
         masked_number = get_mask_account(int(number))
         return f"Счет **{masked_number}"
     else:
-        number = data.split(' ')[-1]
+        number = data.split(" ")[-1]
         masked_number = get_mask_card_number(int(number))
         return f"{' '.join(data.split(' ')[:-1])} {masked_number}"
 
-from datetime import datetime
 
 def get_date(date_str: str) -> str:
     """
@@ -31,6 +33,5 @@ def get_date(date_str: str) -> str:
     Returns:
         str: Строка с датой в формате "ДД.ММ.ГГГГ".
     """
-    date = datetime.fromisoformat(date_str.split('T')[0])
-    return date.strftime('%d.%m.%Y')
-
+    date = datetime.fromisoformat(date_str.split("T")[0])
+    return date.strftime("%d.%m.%Y")
